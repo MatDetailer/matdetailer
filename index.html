@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Detailing Auto</title>
+<style>
+:root {
+    --bg: #0f1113;
+    --panel: #171a1f;
+    --panel-hover: #1d2127;
+    --accent: #00d49a;
+    --accent-soft: rgba(0, 212, 154, 0.18);
+    --text: #f5f7f8;
+    --muted: #b6bec8;
+    --border: rgba(255, 255, 255, 0.08);
+    --shadow: 0 18px 40px rgba(0, 0, 0, 0.28);
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 24px;
+    min-height: 100vh;
+    display: flex;
+    font-family: "Segoe UI", sans-serif;
+    background:
+        radial-gradient(circle at top, rgba(0, 212, 154, 0.12), transparent 32%),
+        linear-gradient(180deg, #0a0c0f 0%, #12161b 100%);
+    color: var(--text);
+}
+
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+    min-height: calc(100vh - 48px);
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+h1 {
+    margin-bottom: 10px;
+    text-align: center;
+    color: var(--accent);
+    font-size: clamp(32px, 6vw, 48px);
+}
+
+.intro {
+    margin: 0 0 28px;
+    text-align: center;
+    color: var(--muted);
+}
+
+.packages {
+    width: 100%;
+    max-width: 1320px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 22px;
+}
+
+.card {
+    margin: 0;
+    border: 1px solid var(--border);
+    border-radius: 18px;
+    background: var(--panel);
+    box-shadow: var(--shadow);
+    overflow: hidden;
+    transition: transform 0.2s ease, background 0.2s ease;
+    width: 100%;
+}
+
+.card:hover {
+    transform: translateY(-2px);
+    background: var(--panel-hover);
+}
+
+.card summary {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 18px 20px;
+    cursor: pointer;
+}
+
+.card summary::-webkit-details-marker {
+    display: none;
+}
+
+.title-wrap {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    text-align: left;
+    align-items: flex-start;
+    flex: 1;
+}
+
+.title {
+    font-size: 21px;
+    color: var(--accent);
+    font-weight: 700;
+}
+
+.teaser {
+    color: var(--muted);
+    font-size: 14px;
+}
+
+.arrow {
+    width: 40px;
+    height: 40px;
+    display: grid;
+    place-items: center;
+    flex: 0 0 40px;
+    border-radius: 999px;
+    background: var(--accent-soft);
+    color: var(--accent);
+    font-size: 28px;
+    line-height: 1;
+}
+
+.content {
+    padding: 0 20px 20px;
+    color: var(--muted);
+    line-height: 1.6;
+    text-align: left;
+}
+
+.content p {
+    margin: 0 0 10px;
+}
+
+.price {
+    display: inline-block;
+    margin-top: 8px;
+    padding: 8px 12px;
+    border-radius: 999px;
+    background: var(--accent-soft);
+    color: var(--text);
+    font-weight: 700;
+}
+
+.footer {
+    margin-top: auto;
+    padding: 8px 0 0;
+    text-align: center;
+    color: var(--muted);
+}
+
+.footer a {
+    color: var(--accent);
+    text-decoration: none;
+}
+
+.footer a:hover {
+    text-decoration: underline;
+}
+
+@media (max-width: 640px) {
+    body {
+        padding: 16px;
+    }
+
+    .container {
+        min-height: calc(100vh - 32px);
+    }
+
+    .card summary {
+        padding: 16px;
+    }
+
+    .content {
+        padding: 0 16px 16px;
+    }
+
+    .title {
+        font-size: 18px;
+    }
+
+    .packages {
+        width: 100%;
+        display: block;
+        max-width: 100%;
+        margin-left: 0;
+    }
+
+    .card {
+        margin: 16px 0;
+    }
+}
+
+</style>
+</head>
+<body>
+
+<div class="container">
+    <h1>MatDetailer</h1>
+    <p class="intro">Wybierz pakiet i kliknij, aby zobaczyć pełny opis usługi.</p>
+
+    <section class="packages">
+    <details class="card">
+        <summary>
+            <div class="title-wrap">
+                <span class="title">Pakiet Mycie Detailingowe</span>
+                <span class="teaser">Mycie zewnętrzne krok po kroku</span>
+            </div>
+            <span class="arrow">↓</span>
+        </summary>
+        <div class="content">
+            <p>Aktywna piana, pędzelkowanie detali, mycie na dwa wiadra, deironizacja felg oraz dokładne osuszanie.</p>
+            <p>Czas: 1,5 - 2h</p>
+            <p class="price">Cena: 70 - 90 zł</p>
+        </div>
+    </details>
+
+    <details class="card">
+        <summary>
+            <div class="title-wrap">
+                <span class="title">Pakiet Świeży Środek</span>
+                <span class="teaser">Podstawowe odświeżenie wnętrza auta</span>
+            </div>
+            <span class="arrow">↓</span>
+        </summary>
+        <div class="content">
+            <p>Odkurzanie, czyszczenie plastików APC z użyciem pędzelków oraz mycie szyb wewnątrz pojazdu.</p>
+            <p>Czas: 1,5 - 2h</p>
+            <p class="price">Cena: 70 - 90 zł</p>
+        </div>
+    </details>
+
+    <details class="card">
+        <summary>
+            <div class="title-wrap">
+                <span class="title">Pakiet ALL IN (Komplet)</span>
+                <span class="teaser">Kompleksowe odświeżenie zewnątrz i wnętrza</span>
+            </div>
+            <span class="arrow">↓</span>
+        </summary>
+        <div class="content">
+            <p>Połączenie mycia zewnętrznego z pełnym sprzątaniem środka w jednym pakiecie.</p>
+            <p>Czas: 3,5 - 4h</p>
+            <p class="price">Cena: 130 - 160 zł</p>
+        </div>
+    </details>
+
+    <details class="card">
+        <summary>
+            <div class="title-wrap">
+                <span class="title">Pakiet Czysta Fela</span>
+                <span class="teaser">Dokładne mycie felg i kół</span>
+            </div>
+            <span class="arrow">↓</span>
+        </summary>
+        <div class="content">
+            <p>Dokładne mycie felg i kół z naciskiem na usunięcie bieżących zabrudzeń.</p>
+            <p>Czas: 30 min - 1h</p>
+            <p class="price">Cena: 10 - 15 zł</p>
+        </div>
+    </details>
+    </section>
+
+    <footer class="footer">
+        <p>📍 Krynki i okolice</p>
+        <p>📞 Napisz priv / SMS / 608 015 097</p>
+        <p>👌 <a href="https://www.instagram.com/matty16cl/" target="_blank" rel="noreferrer">Instagram</a></p>
+    </footer>
+</div>
+
+</body>
+</html>
